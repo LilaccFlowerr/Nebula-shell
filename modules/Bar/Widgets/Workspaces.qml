@@ -15,7 +15,7 @@ RowLayout {
     property color colMuted: theme.colMuted
     property int fontSize: theme.fontSize
 
-    anchors.verticalCenter: parent.verticalCenter
+    Layout.alignment: Qt.AlignVCenter
 
     spacing: 10
 

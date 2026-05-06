@@ -6,7 +6,7 @@ import "../../../Services"
 
 RowLayout {
     spacing: 8
-    anchors.verticalCenter: parent.verticalCenter
+    Layout.alignment: Qt.AlignVCenter
 
     Theming {
         id: theme

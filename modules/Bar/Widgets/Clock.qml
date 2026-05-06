@@ -1,9 +1,10 @@
 import QtQuick
+import QtQuick.Layouts
 import "../../../Core"
 
 Text {
     id: clock
-    anchors.verticalCenter: parent.verticalCenter
+    Layout.alignment: Qt.AlignVCenter
     text: Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
 
     Theming {
