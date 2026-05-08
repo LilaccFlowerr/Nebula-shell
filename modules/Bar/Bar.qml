@@ -2,14 +2,22 @@ import Quickshell
 import Quickshell.Wayland
 import Quickshell.Hyprland
 import QtQuick
+import Quickshell.Widgets
 import QtQuick.Layouts
 import Quickshell.Io
 import "Widgets"
+import "Widgets/Buttons"
 import "../../Core"
+
+Variants {
+model: Quickshell.screens
+
 
 PanelWindow {
     id: root
-
+    
+    required property var modelData
+    screen: modelData
     //theming
     Theming {
         id: theme
@@ -31,7 +39,12 @@ PanelWindow {
     anchors.top: true
     anchors.left: true
     anchors.right: true
-    implicitHeight: 30
+    implicitHeight: 40
+    color: "transparent"
+    Rectangle {
+        anchors.fill: parent
+        bottomLeftRadius: 32
+        bottomRightRadius: 32
     color: root.colBg
 
     RowLayout {
@@ -56,5 +69,7 @@ PanelWindow {
         Systemvitals {}
 
         Powerbutton {}
+        }
     }
+}
 }

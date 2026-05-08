@@ -10,6 +10,7 @@ Item {
     property color colBlue: "#7aa2f7"
     property color colYellow: "#e0af68"
     property color colMuted: "#414868"
+    property color colSecondary: "#575759"
     property string fontFamily: "JetBrains Nerd Font"
     property int fontSize: 14
 }
