@@ -15,7 +15,7 @@ Item {
         implicitWidth: row.implicitWidth + 16
         implicitHeight: row.implicitHeight + 6
         radius: 999
-        color: Theming.colMuted + "44"
+        color: Theming.colWorkspacePillBgAlpha
     }
 
     RowLayout {
@@ -34,12 +34,12 @@ Item {
                 width: 20
                 height: 20
                 radius: 16
-                color: isActive ? Theming.colSecondary : Theming.colMuted
+                color: isActive ? Theming.colWorkspaceActiveBg : Theming.colWorkspaceInactiveBg
 
                 Text {
                     anchors.centerIn: parent
                     text: index + 1
-                    color: "white"
+                    color: isActive ? Theming.colWorkspaceActiveFg : Theming.colWorkspaceInactiveFg
                     font.pixelSize: Theming.fontSize
                     font.bold: true
                 }

@@ -34,11 +34,27 @@ QtObject {
     readonly property color colPurple:      "#9d7cd8"   // deeper purple
     readonly property color colWhite:       "#cfc9c2"   // near-white
 
+    // semantic accents (aliases / derived)
+    readonly property color colPrimary:        colBlue
+    readonly property color colPrimaryHover:   colBlueBright
+    readonly property color colPrimaryDim:     Qt.darker(colBlue, 1.35)
+    readonly property color colAccent:         colCyan
+    readonly property color colAccentDim:      Qt.darker(colCyan, 1.25)
+    readonly property color colDanger:         colRed
+    readonly property color colDangerDim:      Qt.darker(colRed, 1.25)
+
     
     readonly property color colSuccess:     "#9ece6a"   // success states
     readonly property color colWarning:     "#e0af68"   // warning states
     readonly property color colError:       "#f7768e"   // error states
     readonly property color colInfo:        "#7aa2f7"   // info / neutral notice
+
+    // interaction states
+    readonly property color colHoverBg:        colBgHighlight
+    readonly property color colPressedBg:      Qt.darker(colBgHighlight, 1.15)
+    readonly property color colSelectedBg:     colBgVisual
+    readonly property color colSelectedFg:     colFg
+    readonly property color colFocusRing:      colBorderFocus
 
   
     readonly property color colBorder:      "#292e42"   // default border
@@ -51,6 +67,17 @@ QtObject {
     readonly property color colBgAlpha40:   "#661a1b26" // bg at 40% opacity (popups)
     readonly property color colOverlay:     "#801a1b26" // modal overlay tint
     readonly property color colShadow:      "#8013141f" // drop shadow color
+
+    // workspace / tag styling helpers
+    readonly property color colWorkspacePillBg:         colMuted
+    readonly property color colWorkspacePillBgAlpha:    Qt.rgba(colMuted.r, colMuted.g, colMuted.b, 0.27)
+    readonly property color colWorkspaceInactiveBg:     colMuted
+    readonly property color colWorkspaceInactiveFg:     colFg
+    readonly property color colWorkspaceActiveBg:       colMagenta
+    readonly property color colWorkspaceActiveFg:       colWhite
+    readonly property color colWorkspaceHoverBg:        Qt.rgba(colCyan.r, colCyan.g, colCyan.b, 0.18)
+    readonly property color colWorkspaceUrgentBg:       colDanger
+    readonly property color colWorkspaceUrgentFg:       colWhite
 
    
     readonly property string fontFamily:    "JetBrains Nerd Font"

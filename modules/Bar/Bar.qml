@@ -27,8 +27,8 @@ Variants {
             anchors.fill: parent
             bottomLeftRadius: 32
             bottomRightRadius: 32
-            color: Theming.colBg
-
+            color: Theming.colBgDeep
+            
             RowLayout {
                 anchors.fill: parent
                 anchors.margins: 8
