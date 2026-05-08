@@ -56,6 +56,7 @@ QtObject {
     readonly property string fontFamily:    "JetBrains Nerd Font"
     readonly property string fontFamilyMono:"JetBrainsMono Nerd Font"
     readonly property string fontFamilyUI:  "Inter"     // clean UI font fallback
+    readonly property string fontVapor:    "VT323" // decorative vaporwave font
 
     readonly property int    fontSizeXs:    10
     readonly property int    fontSizeSm:    12
