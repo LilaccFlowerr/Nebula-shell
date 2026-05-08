@@ -1,54 +1,32 @@
 import QtQuick
 import QtQuick.Layouts
-
-import "../../../Core"
+import qs.Core
 import "../../../Services"
 
 RowLayout {
     spacing: 8
     Layout.alignment: Qt.AlignVCenter
 
-    Theming {
-        id: theme
-    }
-
-    CpuProcess {
-        id: cpu
-    }
-
-    MemProcess {
-        id: mem
-    }
+    CpuProcess { id: cpu }
+    MemProcess  { id: mem }
 
     Text {
         text: "CPU: " + cpu.cpuUsage + "%"
-        color: theme.colYellow
-        font {
-            family: theme.fontFamily
-            pixelSize: theme.fontSize
-            bold: true
-        }
+        color: Theming.colYellow
+        font.family: Theming.fontFamily
+        font.pixelSize: Theming.fontSize
+        font.bold: true
     }
 
-    Rectangle {
-        width: 1
-        height: 16
-        color: theme.colMuted
-    }
+    Rectangle { width: 1; height: 16; color: Theming.colMuted }
 
     Text {
         text: "Mem: " + mem.memUsage + "%"
-        color: theme.colCyan
-        font {
-            family: theme.fontFamily
-            pixelSize: theme.fontSize
-            bold: true
-        }
+        color: Theming.colCyan
+        font.family: Theming.fontFamily
+        font.pixelSize: Theming.fontSize
+        font.bold: true
     }
 
-    Rectangle {
-        width: 1
-        height: 16
-        color: theme.colMuted
-    }
+    Rectangle { width: 1; height: 16; color: Theming.colMuted }
 }

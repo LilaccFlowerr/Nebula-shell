@@ -1,22 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
-import "../../../Core"
-
+import qs.Core
 Text {
     id: clock
     Layout.alignment: Qt.AlignVCenter
     text: Qt.formatDateTime(new Date(), "ddd, MMM dd - HH:mm")
-
-    Theming {
-        id: theme
-    }
-
-    color: theme.colPink
-    font {
-        family: theme.fontFamily
-        pixelSize: theme.fontSize
-        bold: true
-    }
+    color: Theming.colBlue
+    font.family: Theming.fontFamily
+    font.pixelSize: Theming.fontSize
+    font.bold: true
 
     Timer {
         interval: 1000

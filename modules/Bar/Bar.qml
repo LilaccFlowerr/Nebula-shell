@@ -7,69 +7,70 @@ import QtQuick.Layouts
 import Quickshell.Io
 import "Widgets"
 import "Widgets/Buttons"
-import "../../Core"
+import qs.Core
 
 Variants {
-model: Quickshell.screens
+    model: Quickshell.screens
 
+    PanelWindow {
+        id: root
+        required property var modelData
+        screen: modelData
 
-PanelWindow {
-    id: root
-    
-    required property var modelData
-    screen: modelData
-    //theming
-    Theming {
-        id: theme
+        anchors.top: true
+        anchors.left: true
+        anchors.right: true
+        implicitHeight: 40
+        color: "transparent"
+
+        Rectangle {
+            anchors.fill: parent
+            bottomLeftRadius: 32
+            bottomRightRadius: 32
+            color: Theming.colBg
+
+            RowLayout {
+                anchors.fill: parent
+                anchors.margins: 8
+                spacing: 10
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    RowLayout {
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: 10
+
+                        Logo {}
+                        Workspaces {}
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    Clock {
+                        anchors.centerIn: parent
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    RowLayout {
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: 10
+
+                        Systemvitals {}
+                        Powerbutton {}
+                    }
+                }
+            }
+        }
     }
-
-    property color colBg: theme.colBg
-    property color colCyan: theme.colCyan
-    property color colPink: theme.colPink
-    property color colBlue: theme.colBlue
-    property color colYellow: theme.colYellow
-    property color colMuted: theme.colMuted
-    property string fontFamily: theme.fontFamily
-    property int fontSize: theme.fontSize
-
-    //system data
-
-    // cpu
-
-    anchors.top: true
-    anchors.left: true
-    anchors.right: true
-    implicitHeight: 40
-    color: "transparent"
-    Rectangle {
-        anchors.fill: parent
-        bottomLeftRadius: 32
-        bottomRightRadius: 32
-    color: root.colBg
-
-    RowLayout {
-        anchors.fill: parent
-        anchors.margins: 8
-        spacing: 10
-
-        Logo {}
-
-        Workspaces {}
-
-        Item {
-            Layout.fillWidth: true
-        }
-
-        Clock {}
-
-        Item {
-            Layout.fillWidth: true
-        }
-
-        Systemvitals {}
-
-        Powerbutton {}
-        }
-    }
-}
 }
