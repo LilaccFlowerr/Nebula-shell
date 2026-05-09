@@ -40,8 +40,9 @@ Item {
                     anchors.centerIn: parent
                     text: index + 1
                     color: isActive ? Theming.colWorkspaceActiveFg : Theming.colWorkspaceInactiveFg
-                    font.pixelSize: Theming.fontSize
+                    font.pixelSize: Theming.fontSizeXl
                     font.bold: true
+                    font.family: Theming.fontVapor
                 }
 
                 MouseArea {
