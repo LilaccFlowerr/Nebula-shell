@@ -21,15 +21,25 @@ Variants {
         anchors.top: true
         anchors.left: true
         anchors.right: true
-        implicitHeight: 40
+        // Keep the window full-width for the strut/anchor,
+        // but inset the visible bar to make it "float".
+        implicitHeight: Theming.barHeight + (Theming.spacing * 2)
         color: "transparent"
+        
 
         Rectangle {
-            anchors.fill: parent
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.leftMargin: Theming.spacingXs
+            anchors.rightMargin: Theming.spacingXs
+            anchors.topMargin: Theming.spacingXs
+            height: Theming.barHeight
             bottomLeftRadius: 32
             bottomRightRadius: 32
+            topRightRadius: 32
+            topLeftRadius: 32
             color: Theming.colBgDeep
-            
             RowLayout {
                 anchors.fill: parent
                 anchors.margins: 8
@@ -55,7 +65,7 @@ Variants {
 
                     RowLayout {
                         anchors.centerIn: parent
-                        spacing: 2
+                        spacing: 3
 
                         Clock {}
                         WeatherBar {}
@@ -70,8 +80,10 @@ Variants {
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: 10
-
-                        Systemvitals {}
+                        
+                        Volume {}
+                        Quicksettings {}
+                        Connections {}
                         Powerbutton {}
                     }
                 }

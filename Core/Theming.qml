@@ -115,7 +115,7 @@ QtObject {
     readonly property int    radiusLg:      12
     readonly property int    radiusPill:    999         // fully rounded / pill shape
 
-    readonly property int    barHeight:     32
+    readonly property int    barHeight:     40
     readonly property int    barPadding:    8
     readonly property int    barIconSize:   16
     readonly property int    barModuleGap:  6
