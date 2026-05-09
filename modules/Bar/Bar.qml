@@ -7,6 +7,7 @@ import QtQuick.Layouts
 import Quickshell.Io
 import "Widgets"
 import "Widgets/Buttons"
+import "Widgets/Weather"
 import qs.Core
 
 Variants {
@@ -52,8 +53,12 @@ Variants {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
-                    Clock {
+                    RowLayout {
                         anchors.centerIn: parent
+                        spacing: 2
+
+                        Clock {}
+                        WeatherBar {}
                     }
                 }
 

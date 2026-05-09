@@ -5,11 +5,12 @@ import Quickshell.Widgets
 
 
 Rectangle{
-    color: Theming.colMuted + "44"
-    radius: 999
+    color: Theming.colMuted + "55"
+    topLeftRadius: 999
+    bottomLeftRadius: 999
     Layout.alignment: Qt.AlignVCenter
     implicitWidth: clock.implicitWidth + 16
-    implicitHeight: clock.implicitHeight + 6
+    implicitHeight: clock.implicitHeight
 Text {
     id: clock
     Layout.alignment: Qt.AlignVCenter
