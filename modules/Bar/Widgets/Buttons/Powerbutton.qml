@@ -23,7 +23,7 @@ Rectangle {
     Text {
         anchors.centerIn: parent
         text: "\uF011"
-        color: "red"
+        color: Theming.colCrtRed
         font.family: Theming.fontVapor
         font.pixelSize: 18
     }

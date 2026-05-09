@@ -34,6 +34,62 @@ QtObject {
     readonly property color colPurple:      "#9d7cd8"   // deeper purple
     readonly property color colWhite:       "#cfc9c2"   // near-white
 
+    // vaporwave palette
+    readonly property color colVaporHotPink:   "#ff71ce"
+    readonly property color colVaporPink:      "#ff9ff3"
+    readonly property color colVaporPurple:    "#b967ff"
+    readonly property color colVaporBlue:      "#01cdfe"
+    readonly property color colVaporCyan:      "#05f3ff"
+    readonly property color colVaporMint:      "#1ef6a8"
+    readonly property color colVaporSunset:    "#ffb86c"
+    readonly property color colVaporLilac:     "#c792ea"
+    readonly property color colVaporText:      "#f8f1ff"
+    readonly property color colVaporBg:        "#12071f"
+    readonly property color colVaporBgDeep:    "#090312"
+    readonly property color colVaporGlass:     Qt.rgba(0.92, 0.43, 0.87, 0.12)
+    readonly property color colVaporBorder:    Qt.rgba(0.65, 0.38, 1.0, 0.55)
+    readonly property color colVaporGlow:      Qt.rgba(1.0, 0.44, 0.81, 0.35)
+    readonly property color colVaporShadow:    Qt.rgba(0.48, 0.06, 0.74, 0.42)
+    readonly property color colVaporSelection:  Qt.rgba(0.0, 0.81, 0.99, 0.22)
+
+    // vaporwave effect helpers
+    readonly property color colVaporGradientStart: colVaporHotPink
+    readonly property color colVaporGradientMid:    colVaporPurple
+    readonly property color colVaporGradientEnd:    colVaporBlue
+    readonly property color colVaporAccent:         colVaporPink
+    readonly property color colVaporAccentAlt:      colVaporCyan
+    readonly property color colVaporAccentDim:      Qt.rgba(colVaporPink.r, colVaporPink.g, colVaporPink.b, 0.55)
+    readonly property color colVaporPulse:          Qt.rgba(colVaporBlue.r, colVaporBlue.g, colVaporBlue.b, 0.25)
+
+    // crt palette
+    readonly property color colCrtBg:            "#050607"
+    readonly property color colCrtBgDeep:        "#000000"
+    readonly property color colCrtText:          "#d6ffe6"
+    readonly property color colCrtTextDim:       "#7fbf98"
+    readonly property color colCrtGreen:         "#2cff7a"
+    readonly property color colCrtPhosphor:      "#7dffb0"
+    readonly property color colCrtAmber:         "#ffcf6b"
+    readonly property color colCrtCyan:          "#66fff4"
+    readonly property color colCrtMagenta:       "#ff66f0"
+    readonly property color colCrtRed:           "#ff4d4d"
+    readonly property color colCrtScanline:      Qt.rgba(0.0, 0.0, 0.0, 0.26)
+    readonly property color colCrtShadow:        Qt.rgba(0.0, 0.0, 0.0, 0.72)
+    readonly property color colCrtGlow:          Qt.rgba(0.17, 1.0, 0.48, 0.32)
+    readonly property color colCrtGlowSoft:      Qt.rgba(0.17, 1.0, 0.48, 0.16)
+    readonly property color colCrtBorder:        Qt.rgba(0.25, 1.0, 0.55, 0.35)
+    readonly property color colCrtFlicker:       Qt.rgba(0.85, 1.0, 0.9, 0.06)
+    readonly property color colCrtNoiseLight:    Qt.rgba(1.0, 1.0, 1.0, 0.03)
+    readonly property color colCrtNoiseDark:     Qt.rgba(0.0, 0.0, 0.0, 0.08)
+
+    // crt effect helpers
+    readonly property color colCrtGradientStart:  colCrtGreen
+    readonly property color colCrtGradientMid:    colCrtPhosphor
+    readonly property color colCrtGradientEnd:    colCrtCyan
+    readonly property color colCrtAccent:         colCrtAmber
+    readonly property color colCrtAccentAlt:      colCrtMagenta
+    readonly property color colCrtAccentDim:     Qt.rgba(colCrtAmber.r, colCrtAmber.g, colCrtAmber.b, 0.55)
+    readonly property color colCrtPulse:         Qt.rgba(colCrtGreen.r, colCrtGreen.g, colCrtGreen.b, 0.22)
+
     // semantic accents (aliases / derived)
     readonly property color colPrimary:        colBlue
     readonly property color colPrimaryHover:   colBlueBright
@@ -108,12 +164,40 @@ QtObject {
     readonly property int    spacingXl:     24
     readonly property int    spacingXxl:    32
 
+    // vaporwave sizing helpers
+    readonly property int    vaporGlowSize:  24
+    readonly property int    vaporBorder:    2
+    readonly property int    vaporFloat:     10
+    readonly property real   vaporOpacity:   0.85
+    readonly property real   vaporGlassOpacity: 0.18
+
+    // crt sizing / tuning helpers
+    readonly property int    crtScanlineHeight: 2
+    readonly property int    crtGlowSize:      18
+    readonly property int    crtBorder:        1
+    readonly property int    crtFloat:          4
+    readonly property int    crtCurve:          8
+    readonly property real   crtOpacity:        0.88
+    readonly property real   crtFlickerOpacity: 0.06
+    readonly property real   crtScanOpacity:    0.22
+    readonly property real   crtNoiseOpacity:   0.04
+
     readonly property int    radiusNone:    0
     readonly property int    radiusSm:      4
     readonly property int    radius:        6           // default corner radius
     readonly property int    radiusMd:      8
     readonly property int    radiusLg:      12
     readonly property int    radiusPill:    999         // fully rounded / pill shape
+
+    readonly property int    radiusVaporSm:  10
+    readonly property int    radiusVapor:    18
+    readonly property int    radiusVaporLg:  24
+    readonly property int    radiusVaporPill: 999
+
+    readonly property int    radiusCrtSm:    4
+    readonly property int    radiusCrt:      8
+    readonly property int    radiusCrtLg:    12
+    readonly property int    radiusCrtPill:  999
 
     readonly property int    barHeight:     40
     readonly property int    barPadding:    8
