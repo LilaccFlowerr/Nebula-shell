@@ -2,11 +2,10 @@ import QtQuick
 import Quickshell.Widgets
 import QtQuick.Layouts
 import qs.Core
+import "../../../Menus"
 
 Item {
-
     id: powerButton
-
     implicitWidth: 24
     implicitHeight: 24
     MouseArea {
