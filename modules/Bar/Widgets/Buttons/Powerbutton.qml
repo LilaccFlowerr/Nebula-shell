@@ -2,7 +2,6 @@ import QtQuick
 import Quickshell.Widgets
 import QtQuick.Layouts
 import qs.Core
-import "../../../../Menus/PowerMenu"
 
 Item {
     id: powerButton
