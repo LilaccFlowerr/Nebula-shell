@@ -2,7 +2,7 @@ import QtQuick
 import Quickshell.Widgets
 import QtQuick.Layouts
 import qs.Core
-import "../../../Menus"
+import "../../../../Menus/PowerMenu"
 
 Item {
     id: powerButton
@@ -10,7 +10,7 @@ Item {
     implicitHeight: 24
     MouseArea {
         anchors.fill: parent
-        onClicked: powerMenu.open()
+        onClicked: powerMenu()
     }
 Rectangle {
         anchors.fill: parent

@@ -1,5 +1,8 @@
 import Quickshell
 import QtQuick
+import qs.Core
+import Quickshell.Widgets
+import QtQuick.Layouts
 
 Item {
     id: powerMenu
