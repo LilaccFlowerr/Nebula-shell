@@ -14,7 +14,7 @@ Item {
 Rectangle {
         anchors.fill: parent
         color: Theming.colWorkspaceInactiveBg
-        radius: 999
+        radius: 60
         implicitWidth: parent.implicitWidth + 16
         implicitHeight: parent.implicitHeight + 16
     
