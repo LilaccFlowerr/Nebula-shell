@@ -1,2 +1,3 @@
 module qs.Core
 singleton Theming 1.0 Theming.qml
+singleton Ipc 1.0 Ipc.qml

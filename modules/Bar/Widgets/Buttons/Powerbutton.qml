@@ -7,9 +7,9 @@ Item {
     id: powerButton
     implicitWidth: 24
     implicitHeight: 24
-    MouseArea {
+     MouseArea {
         anchors.fill: parent
-        onClicked: powerMenu()
+        onClicked: Ipc.togglePowerMenu()
     }
 Rectangle {
         anchors.fill: parent
