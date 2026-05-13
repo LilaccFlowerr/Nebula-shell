@@ -2,6 +2,7 @@ import Quickshell
 import QtQuick
 import qs.Core
 
+
 Item {
     id: root
 

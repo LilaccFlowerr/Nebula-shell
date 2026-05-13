@@ -2,7 +2,6 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import qs.Core
-import qs.Modules.Panels
 
 Item {
     id: root
@@ -12,11 +11,10 @@ Item {
 
    
     PowerMenu {
-        id: powerMenu
+        id: powermenu
 
         isOpen: root.context.appState.powerMenuOpen
         globalState: root.context.appState
-        colors: root.context.colors
     }
 
 
@@ -27,6 +25,5 @@ Item {
 
         target: "powermenu"
     }
-
 
 }
