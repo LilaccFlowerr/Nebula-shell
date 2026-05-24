@@ -21,8 +21,6 @@ Variants {
         anchors.top: true
         anchors.left: true
         anchors.right: true
-        // Keep the window full-width for the strut/anchor,
-        // but inset the visible bar to make it "float".
         implicitHeight: Theming.barHeight + (Theming.spacing * 2)
         color: "transparent"
         

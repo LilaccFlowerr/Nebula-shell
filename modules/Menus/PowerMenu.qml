@@ -11,14 +11,18 @@ PanelWindow {
     required property bool isOpen
     required property var globalState
 
-    width: 400
-    height: 400
+    implicitWidth: 400
+    implicitHeight: 400
     visible: isOpen
-
+    color: '#22000000'
+MouseArea {
+        anchors.fill: parent
+        onClicked: globalState.powerMenuOpen = false
+    }
     Rectangle {
         anchors.fill: parent
         radius: 24
-        color: "#1b1b1f"
+        color: '#110f0f'
 
         ColumnLayout {
             anchors.centerIn: parent
@@ -26,15 +30,23 @@ PanelWindow {
 
             Button {
                 text: "Power Off"
+                onClicked: {
+                     Quickshell.execDetached(["sh", "-c", "systemctl poweroff"]);
+                }
             }
 
             Button {
                 text: "Restart"
+                onClicked: {
+                     Quickshell.execDetached(["sh", "-c", "systemctl reboot"]);
+                }
             }
-
             Button {
-                text: "Sleep"
+                text: "Reload"
+                onClicked: {
+                     Quickshell.execDetached(["sh", "-c", "pkill qs && qs -c Nebula-shell &"]);
+                }
+            }
             }
         }
     }
-}
