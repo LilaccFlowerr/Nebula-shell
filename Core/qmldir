@@ -1,3 +1,5 @@
 module qs.Core
+Context 1.0 Context.qml
+GlobalState 1.0 GlobalState.qml
 singleton Theming 1.0 Theming.qml
 singleton Ipc 1.0 Ipc.qml

@@ -1,2 +1,2 @@
 module qs.Menus
-singleton PowerMenu 1.0 PowerMenu.qml
+PowerMenu 1.0 PowerMenu.qml
