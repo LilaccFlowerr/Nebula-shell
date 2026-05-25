@@ -10,7 +10,7 @@ PanelWindow {
     id: root
     required property bool isOpen
     required property var globalState
-
+    
     implicitWidth: 400
     implicitHeight: 400
     visible: isOpen
