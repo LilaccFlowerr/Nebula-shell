@@ -52,7 +52,9 @@ Variants {
                         anchors.verticalCenter: parent.verticalCenter
                         spacing: 10
 
-                        Logo {}
+                        Logo {
+                            Layout.leftMargin: 6
+                        }
                         Workspaces {}
                     }
                 }

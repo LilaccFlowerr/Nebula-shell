@@ -30,7 +30,7 @@ PanelWindow {
     implicitWidth: Screen.width
     implicitHeight: Screen.height
     visible: isOpen
-    color: "#22000000"
+    color: '#00000000'
 
     MouseArea {
         anchors.fill: parent
@@ -49,12 +49,31 @@ PanelWindow {
             Repeater {
                 model: root.buttonsModel
 
-                Button {
+                Rectangle {
                     required property var modelData
 
-                    text: modelData.text
-                    Layout.alignment: Qt.AlignHCenter
-                    onClicked: root.runCommand(modelData.command)
+                    Layout.alignment: Qt.AlignWCenter
+                    Layout.preferredWidth: 200
+                    Layout.preferredHeight: 200
+                    radius: 12
+                    color: mouseArea.containsMouse ? "#3a3a4a" : "#2a2a3a"
+                    border.width: 1
+                    border.color: "#4a4a5a"
+
+                    Text {
+                        anchors.centerIn: parent
+                        text: parent.modelData.text
+                        color: "#c0caf5"
+                        font.pixelSize: 14
+                    }
+
+                    MouseArea {
+                        id: mouseArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: root.runCommand(parent.modelData.command)
+                    }
                 }
             }
         }

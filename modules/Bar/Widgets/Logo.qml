@@ -1,5 +1,6 @@
 import QtQuick
 import qs.Core
+import Quickshell.Widgets
 
 Item {
     implicitWidth: logo.implicitWidth
