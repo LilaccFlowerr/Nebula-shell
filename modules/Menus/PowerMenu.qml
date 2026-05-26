@@ -10,43 +10,53 @@ PanelWindow {
     id: root
     required property bool isOpen
     required property var globalState
+
+    readonly property var buttonsModel: [{
+        "text": "Power Off",
+        "command": "systemctl poweroff"
+    }, {
+        "text": "Restart",
+        "command": "systemctl reboot"
+    }, {
+        "text": "Reload",
+        "command": "pkill qs && qs -c Nebula-shell &"
+    }]
+
+    function runCommand(cmd) {
+        Quickshell.execDetached(["sh", "-c", cmd]);
+        globalState.powerMenuOpen = false;
+    }
     
-    implicitWidth: 400
-    implicitHeight: 400
+    implicitWidth: Screen.width
+    implicitHeight: Screen.height
     visible: isOpen
-    color: '#22000000'
-MouseArea {
+    color: "#22000000"
+
+    MouseArea {
         anchors.fill: parent
         onClicked: globalState.powerMenuOpen = false
     }
+
     Rectangle {
         anchors.fill: parent
         radius: 24
-        color: '#110f0f'
+        color: "transparent"
 
         ColumnLayout {
             anchors.centerIn: parent
             spacing: 12
 
-            Button {
-                text: "Power Off"
-                onClicked: {
-                     Quickshell.execDetached(["sh", "-c", "systemctl poweroff"]);
-                }
-            }
+            Repeater {
+                model: root.buttonsModel
 
-            Button {
-                text: "Restart"
-                onClicked: {
-                     Quickshell.execDetached(["sh", "-c", "systemctl reboot"]);
+                Button {
+                    required property var modelData
+
+                    text: modelData.text
+                    Layout.alignment: Qt.AlignHCenter
+                    onClicked: root.runCommand(modelData.command)
                 }
-            }
-            Button {
-                text: "Reload"
-                onClicked: {
-                     Quickshell.execDetached(["sh", "-c", "pkill qs && qs -c Nebula-shell &"]);
-                }
-            }
             }
         }
     }
+}
