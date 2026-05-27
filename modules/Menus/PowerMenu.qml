@@ -42,20 +42,18 @@ PanelWindow {
         radius: 24
         color: "transparent"
 
-        ColumnLayout {
+        Row {
             anchors.centerIn: parent
-            spacing: 12
+            spacing: 60
 
             Repeater {
                 model: root.buttonsModel
 
                 Rectangle {
                     required property var modelData
-
-                    Layout.alignment: Qt.AlignWCenter
-                    Layout.preferredWidth: 200
-                    Layout.preferredHeight: 200
-                    radius: 12
+                    width: 200
+                    height: 200
+                    radius: 60
                     color: mouseArea.containsMouse ? "#3a3a4a" : "#2a2a3a"
                     border.width: 1
                     border.color: "#4a4a5a"
