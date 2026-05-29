@@ -16,7 +16,6 @@ Item {
 
     function reload() {
         var content = configFile.text()
-        console.log("config text:", content)
         if (content.trim() === "") return
         try {
             wallpaperMap = JSON.parse(content)
