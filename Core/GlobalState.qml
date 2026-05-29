@@ -4,6 +4,7 @@ QtObject {
     id: root
 
     property bool powerMenuOpen: false
+    property bool wallpaperMenuOpen: false
 
 
     function togglePowerMenu() {
@@ -15,8 +16,18 @@ QtObject {
         }
     }
 
+    function toggleWallpaperMenu() {
+        if (wallpaperMenuOpen) {
+            wallpaperMenuOpen = false;
+        } else {
+            closeAll();
+            wallpaperMenuOpen = true;
+        }
+    }
+
     function closeAll() {
         powerMenuOpen = false;
+        wallpaperMenuOpen = false;
     }
 
 }

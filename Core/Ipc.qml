@@ -10,11 +10,22 @@ Singleton {
         powerMenuProc.running = true;
     }
 
+    function toggleWallpaperMenu() {
+        wallpaperMenuProc.running = true;
+    }
+
 
     Process {
         id: powerMenuProc
         command: ["quickshell", "ipc", "-c", "Nebula-shell", "call", "powermenu", "toggle"]
         running: false
+    }
+
+    Process {
+        id: wallpaperMenuProc
+        command: ["quickshell", "ipc", "-c", "Nebula-shell", "call", "wallpapermenu", "toggle"]
+        running: false
+    
     }
 
 }

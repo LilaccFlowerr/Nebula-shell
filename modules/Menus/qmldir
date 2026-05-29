@@ -1,2 +1,3 @@
 module qs.Menus
 PowerMenu 1.0 PowerMenu.qml
+WallpaperMenu 1.0 WallpaperMenu.qml

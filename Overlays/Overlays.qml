@@ -16,13 +16,30 @@ Item {
         globalState: root.context.appState
     }
 
+    WallpaperMenu {
+        id: wallpapermenu
+
+        isOpen: root.context.appState.wallpaperMenuOpen
+        globalState: root.context.appState
+    }
+
 
     IpcHandler {
         function toggle() {
+            console.log("IPC received: powermenu toggle")
             root.context.appState.togglePowerMenu();
         }
 
         target: "powermenu"
+    }
+
+    IpcHandler {
+        function toggle() {
+            console.log("IPC received: wallpapermenu toggle")
+            root.context.appState.toggleWallpaperMenu();
+        }
+
+        target: "wallpapermenu"
     }
 
 }
