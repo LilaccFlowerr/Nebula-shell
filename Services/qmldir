@@ -1,0 +1,5 @@
+module qs.Services
+
+CpuProcess 1.0 CpuProcess.qml
+MemProcess 1.0 MemProcess.qml
+WallpaperProcess 1.0 WallpaperProcess.qml

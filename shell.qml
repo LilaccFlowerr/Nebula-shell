@@ -2,6 +2,7 @@ import Quickshell
 import "modules/Bar"
 import qs.Core
 import "Overlays"
+import "modules/Background"
 
 ShellRoot {
     Context {
@@ -13,5 +14,8 @@ ShellRoot {
 
     Overlays {
         context: context
+    }
+
+    Background {
     }
 }
