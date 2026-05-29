@@ -14,14 +14,13 @@ Item {
     }
 
     Component.onCompleted: {
-            img.source = context.wallpaperProcess.getWallpaper(screenName)
+        img.source = context.wallpaperProcess.getWallpaper(screenName)
     }
 
     Connections {
         target: context.wallpaperProcess
         function onWallpaperChanged(changedScreen, path) {
-            if (changedScreen === screenName)
-                img.source = path
+            img.source = path
         }
     }
 }
