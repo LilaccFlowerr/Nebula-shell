@@ -1,12 +1,14 @@
 import QtQuick
 import Quickshell
 import Quickshell.Io
+import Qt.labs.folderlistmodel
 
 Item {
     id: root
 
     property bool isInitialized: false
     property var wallpaperMap: ({})
+    property alias wallpapers: folderModel
 
     signal wallpaperChanged(string screenName, string path)
 
@@ -47,4 +49,11 @@ Item {
         isInitialized = true
         reload()
     }
+
+    FolderListModel {
+    id: folderModel
+    folder: "file://" + Quickshell.env("HOME") + "/Pictures/Wallpapers"
+    nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp", "*.gif"]
+    showDirs: false
+}
 }
