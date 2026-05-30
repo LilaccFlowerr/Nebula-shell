@@ -30,6 +30,12 @@ Item {
         return expandPath(wallpaperMap["wallpaper"] ?? "")
     }
 
+    function changeWallpaper(screenName, path) {
+        wallpaperMap["wallpaper"] = path
+        configFile.write(JSON.stringify(wallpaperMap, null, 4))
+        wallpaperChanged(screenName, expandPath(path))
+    }
+
     FileView {
         id: configFile
         path: Quickshell.env("HOME") + "/.config/quickshell/Nebula-shell/wallpapers.json"
