@@ -90,11 +90,12 @@ property var globalState
                    
                    
                                 MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: context.wallpaperProcess.changeWallpaper(
-                                        modelData.name,
-                                        model.filePath
-                                    )
+    anchors.fill: parent
+    onClicked: context.wallpaperProcess.changeWallpaper(
+        "all",
+        model.filePath
+    )
+
                                     
                                 }
                             }

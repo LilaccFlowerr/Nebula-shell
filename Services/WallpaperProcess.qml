@@ -32,10 +32,39 @@ Item {
         return expandPath(wallpaperMap["wallpaper"] ?? "")
     }
 
+function onWallpaperChanged(changedScreen, path) {
+    console.log("wallpaperChanged:", changedScreen, path)
+    console.log("screenName is:", screenName)
+    console.log("changedScreen === screenName:", changedScreen === screenName)
+    console.log("changedScreen === all:", changedScreen === "all")
+    if (changedScreen !== screenName && changedScreen !== "all") return
+    console.log("past the guard")
+    root.source = ""
+    root.source = "file://" + path
+}
+
     function changeWallpaper(screenName, path) {
         wallpaperMap["wallpaper"] = path
-        configFile.write(JSON.stringify(wallpaperMap, null, 4))
+        var jsonContent = JSON.stringify(wallpaperMap, null, 4)
+        var configPath = Quickshell.env("HOME") + "/.config/quickshell/Nebula-shell/wallpapers.json"
+
+        writeProc.command = ["sh", "-c", "cat > '" + configPath + "'"]
+        writeProc.running = true
+        writeProc.write(jsonContent)
+        writeProc.write("\n")
+        writeProc.stdinEnabled = false
+        writeProc.stdinEnabled = true  
+
         wallpaperChanged(screenName, expandPath(path))
+    }
+
+    Process {
+        id: writeProc
+        stdinEnabled: true
+        onExited: (code, status) => {
+            if (code !== 0)
+                console.warn("wallpaper write failed with exit code:", code)
+        }
     }
 
     FileView {
@@ -51,9 +80,9 @@ Item {
     }
 
     FolderListModel {
-    id: folderModel
-    folder: "file://" + Quickshell.env("HOME") + "/Pictures/Wallpapers"
-    nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp", "*.gif"]
-    showDirs: false
-}
+        id: folderModel
+        folder: "file://" + Quickshell.env("HOME") + "/Pictures/Wallpapers"
+        nameFilters: ["*.jpg", "*.jpeg", "*.png", "*.webp", "*.gif"]
+        showDirs: false
+    }
 }
