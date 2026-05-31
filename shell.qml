@@ -1,7 +1,7 @@
 import Quickshell
 import "modules/Bar"
 import qs.Core
-import "Overlays"
+import qs.Overlays
 import "modules/Background"
 
 ShellRoot {

@@ -2,7 +2,7 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 import qs.Core
-import "../modules/Menus"
+import "root:/modules/Menus"
 
 Item {
     id: root
