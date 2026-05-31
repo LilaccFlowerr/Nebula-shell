@@ -33,10 +33,6 @@ Item {
     }
 
 function onWallpaperChanged(changedScreen, path) {
-    console.log("wallpaperChanged:", changedScreen, path)
-    console.log("screenName is:", screenName)
-    console.log("changedScreen === screenName:", changedScreen === screenName)
-    console.log("changedScreen === all:", changedScreen === "all")
     if (changedScreen !== screenName && changedScreen !== "all") return
     console.log("past the guard")
     root.source = ""
