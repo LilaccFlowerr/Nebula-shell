@@ -9,7 +9,7 @@ Item {
     property string screenName: modelData?.name ?? ""
     property var currentImage: img1
     property string source: ""
-    property int transitionType: 0
+    property int transitionType: 0 // 0: fade, 1: slide left, 2: push left, 3: push right
 
     anchors.fill: parent
 
@@ -20,6 +20,7 @@ Item {
         oldImage.scale = 1
         oldImage.x = 0
         oldImage.y = 0
+        oldImage.rotation = 0
 
         switch (transitionType) {
         case 0:
@@ -27,28 +28,40 @@ Item {
             newImage.x = 0
             newImage.y = 0
             newImage.scale = 1
+            newImage.rotation = 0
             break
         case 1:
             newImage.opacity = 1
-            newImage.x = w
+            newImage.x = w * 1.5
             newImage.y = 0
             newImage.scale = 1
+            newImage.rotation = 0
             break
+        case 2:
+    newImage.x = -w
+    newImage.y = 0
+    newImage.scale = 1
+    newImage.rotation = 0
+    newImage.opacity = 1
+    oldImage.x = w * 1.5 
+    break
+case 3:
+    newImage.x = w
+    newImage.y = 0
+    newImage.scale = 1
+    newImage.rotation = 0
+    newImage.opacity = 1
+    oldImage.x = -w * 1.5
+    break
         }
 
         img1Container.z = (newImage === img1) ? 2 : 1
         img2Container.z = (newImage === img2) ? 2 : 1
         root.currentImage = newImage
 
-        Qt.callLater(function() {
-            newImage.opacity = 1
-            newImage.scale = 1
-            newImage.x = 0
-            newImage.y = 0
-            oldImage.opacity = 0
-            if (transitionType === 1) oldImage.x = -w
-            transitionTimer.start()
-        })
+        animateTimer.newImg = newImage
+        animateTimer.oldImg = oldImage
+        animateTimer.start()
     }
 
     onSourceChanged: {
@@ -88,11 +101,34 @@ Item {
     }
 
     Timer {
-        id: transitionTimer
-        property var callback
-        interval: 900
+        id: animateTimer
+        interval: 32
         repeat: false
-        onTriggered: if (callback) callback()
+        property var newImg
+        property var oldImg
+        onTriggered: {
+            newImg.opacity = 1
+            newImg.scale = 1
+            newImg.x = 0
+            newImg.y = 0
+            newImg.rotation = 0
+            oldImg.opacity = 0
+            cleanupTimer.oldImg = oldImg
+            cleanupTimer.start()
+        }
+    }
+
+    Timer {
+        id: cleanupTimer
+        interval: 950
+        repeat: false
+        property var oldImg
+        onTriggered: {
+            oldImg.x = 0
+            oldImg.y = 0
+            oldImg.scale = 1
+            oldImg.rotation = 0
+        }
     }
 
     Item {
@@ -101,16 +137,28 @@ Item {
 
         Image {
             id: img1
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height
             fillMode: Image.PreserveAspectCrop
             smooth: true
+            clip: false
             opacity: root.currentImage === img1 ? 1 : 0
 
             Behavior on opacity {
-                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
+                enabled: transitionType === 0
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
             }
             Behavior on x {
-                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+            }
+            Behavior on y {
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+            }
+            Behavior on scale {
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+            }
+            Behavior on rotation {
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
             }
         }
     }
@@ -121,16 +169,28 @@ Item {
 
         Image {
             id: img2
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height
             fillMode: Image.PreserveAspectCrop
             smooth: true
+            clip: false
             opacity: root.currentImage === img2 ? 1 : 0
 
             Behavior on opacity {
-                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
+                enabled: transitionType === 0
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
             }
             Behavior on x {
-                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+            }
+            Behavior on y {
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+            }
+            Behavior on scale {
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+            }
+            Behavior on rotation {
+                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
             }
         }
     }
