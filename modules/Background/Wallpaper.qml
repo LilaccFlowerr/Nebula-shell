@@ -9,7 +9,7 @@ Item {
     property string screenName: modelData?.name ?? ""
     property var currentImage: img1
     property string source: ""
-    property int transitionType: 0 // 0: fade, 1: slide left, 2: push left, 3: push right
+    property int transitionType: 1 // 0: fade, 1: slide left, 2: push left, 3: push right
 
     anchors.fill: parent
 
@@ -31,28 +31,33 @@ Item {
             newImage.rotation = 0
             break
         case 1:
-            newImage.opacity = 1
+            newImage.opacity = 0
             newImage.x = w * 1.5
             newImage.y = 0
             newImage.scale = 1
             newImage.rotation = 0
+            oldImage.opacity = 0
+            oldImage.x = 0
+            oldImage.y = 0
+            oldImage.scale = 1
+            oldImage.rotation = 0
             break
         case 2:
-    newImage.x = -w
-    newImage.y = 0
-    newImage.scale = 1
-    newImage.rotation = 0
-    newImage.opacity = 1
-    oldImage.x = w * 1.5 
-    break
-case 3:
-    newImage.x = w
-    newImage.y = 0
-    newImage.scale = 1
-    newImage.rotation = 0
-    newImage.opacity = 1
-    oldImage.x = -w * 1.5
-    break
+            newImage.x = -w
+            newImage.y = 0
+            newImage.scale = 1
+            newImage.rotation = 0
+            newImage.opacity = 1
+            oldImage.x = w * 1.5 
+            break
+        case 3:
+            newImage.x = w
+            newImage.y = 0
+            newImage.scale = 1
+            newImage.rotation = 0
+            newImage.opacity = 1
+            oldImage.x = -w * 1.5
+            break
         }
 
         img1Container.z = (newImage === img1) ? 2 : 1
@@ -68,10 +73,10 @@ case 3:
         if (source === "") return
         var next = (currentImage === img1) ? img2 : img1
         var old = currentImage
-        next.opacity = 0
-        next.scale = 1
-        next.x = 0
-        next.y = 0
+                // next.opacity = 1
+                // next.scale = 1
+                // next.x = 0
+                // next.y = 0
         next.source = root.source
         Qt.callLater(function() {
             if (next.status === Image.Ready)
@@ -102,7 +107,7 @@ case 3:
 
     Timer {
         id: animateTimer
-        interval: 32
+        interval: 950
         repeat: false
         property var newImg
         property var oldImg
@@ -142,23 +147,23 @@ case 3:
             fillMode: Image.PreserveAspectCrop
             smooth: true
             clip: false
-            opacity: root.currentImage === img1 ? 1 : 0
+            opacity: root.currentImage === img1 ? 0 : 0
 
             Behavior on opacity {
-                enabled: transitionType === 0
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                enabled: transitionType
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on x {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on y {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on scale {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on rotation {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
         }
     }
@@ -174,23 +179,23 @@ case 3:
             fillMode: Image.PreserveAspectCrop
             smooth: true
             clip: false
-            opacity: root.currentImage === img2 ? 1 : 0
+            opacity: root.currentImage === img2 ? 0 : 0
 
             Behavior on opacity {
-                enabled: transitionType === 0
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                enabled: transitionType
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on x {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on y {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on scale {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
             Behavior on rotation {
-                NumberAnimation { duration: 500; easing.type: Easing.InOutCubic }
+                NumberAnimation { duration: 900; easing.type: Easing.InOutCubic }
             }
         }
     }
